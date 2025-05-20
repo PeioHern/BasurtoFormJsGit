@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type"
+		 content="text/html;charset=utf-8">
+    <title>...</title>
+	
+</head>
+<body>
+	<script>
+
+
+class Cuenta {
+    #titular;
+    #cantidad;
+  
+
+
+    constructor(titular = null, cantidad = 0) {
+        this.#titular = titular;
+        this.#cantidad = cantidad;
+    }
+
+    // getters & setters
+    getNombre() {
+        return this.#titular;
+    }
+    getCantidad() {
+        return this.#cantidad;
+    }
+
+     
+    setNombre(titular) {
+        this.#titular = titular;
+    }
+
+    ingresar(cantidad) {
+
+    if(cantidad>0){
+        this.#cantidad = this.#cantidad + cantidad;
+    }else{
+        alert("no puedes ingresar cantidad negativa");
+    }
+        
+    }
+    
+    retirar(cantidad) {
+        if((this.#cantidad - cantidad)>0){
+        this.#cantidad = this.#cantidad - cantidad;
+        }else{
+        alert("no puedes retirar esa cantidad");
+        }
+    }
+
+
+    muestra() {
+        alert("Titular: "+ this.#titular + "\n Cantidad: " + this.#cantidad);
+    }
+
+}
+
+
+cuenta1 = new Cuenta("jhonny", 24.5);
+cuenta2 = new Cuenta("jacky");
+
+arrrayCuentas = [cuenta1, cuenta2];
+
+arrrayCuentas[0].retirar(3.55);
+
+arrrayCuentas[1].ingresar(50.5);
+
+arrrayCuentas.forEach(element => {
+    element.muestra();
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

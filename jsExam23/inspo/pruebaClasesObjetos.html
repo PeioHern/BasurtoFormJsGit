@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type"
+		 content="text/html;charset=utf-8">
+    <title>...</title>
+	
+</head>
+<body>
+	<script>
+
+// creamos la clase usuario
+class Usuario {
+    #nombre;
+    #apellidos;
+    #dni;
+    #nacimiento;
+    #provincia;
+
+
+    constructor(nombre, apellidos, dni, nacimiento, provincia) {
+        this.#nombre = nombre;
+        this.#apellidos = apellidos;
+        this.#dni = dni;
+        this.#nacimiento = nacimiento;
+        this.#provincia = provincia;
+    }
+
+    // getters
+    getNombre() {
+        return this.#nombre;
+    }
+    getApellidos() {
+        return this.#apellidos;
+    }
+    getDNI() {
+        return this.#dni;
+    }
+    getNacimiento() {
+        return this.#nacimiento;
+    }
+    getProvincia() {
+        return this.#provincia;
+    }
+    getEdad() {
+        return new Date().getFullYear - this.#nacimiento;
+
+    }
+    toString() {
+        return this.#nombre + " " + this.#apellidos + ", DNI " + this.#dni +
+            ", nacido en " + this.#nacimiento + ". Reside en " + this.#provincia + ".";
+    }
+    toHTML() {
+    }
+
+    // setters
+    setNombre(nombre) {
+        this.#nombre = nombre;
+    }
+    setApellidos(apellidos) {
+        this.#apellidos = apellidos;
+    }
+    setDNI(dni) {
+        this.#dni = dni;
+    }
+    setNacimiento(nacimiento) {
+        if (nacimiento === parseInt(nacimiento))
+            if (1900 < nacimiento && nacimiento < new Date().getFullYear())
+                this.#nacimiento = nacimiento
+            else
+                this.#nacimiento = 2000
+    }
+    setNombre(provincia) {
+        this.#provincia = provincia;
+    }
+
+    generarLogin() {
+    return this.#nombre.toLowerCase().charAt(0) +
+    this.#apellidos.toLowerCase().charAt(0) +
+    String(this.#nacimiento).substring(2, 4);
+    //corregir esta funcion, esta inacabada
+}
+
+}
+
+uss = new Usuario("adrian","lawnman","237634h","23-34-2024","machacusets");
+
+
+console.log(uss.toString());
+
+uss.setApellidos("cumdickinson");
+
+console.log(uss.toString());
+//alert(uss.toString());
+
+console.log(uss.generarLogin());
+
+
+</script>
+</body>
+</html>

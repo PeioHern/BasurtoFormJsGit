@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<title>Ejercicio 5 - DOM básico y atributos XHTML</title>
+	<style type="text/css">
+		td{
+			border:1px solid black;
+			width:100px;
+			height:20px;
+		}
+	</style>
+	<script type="text/javascript">
+		var eventos=function(){
+			document.getElementById("b1").addEventListener("click", anyadir);
+		}
+
+		function anyadir() {
+			var fila= document.createElement('tr');
+
+			//var contenido= document.createTextNode("fila nueva");
+			
+			for(var i=0; i<document.getElementsByTagName("tr")[0].getElementsByTagName("td").length;i++){
+				var tede= document.createElement('td');
+				var texto = document.createTextNode("Nueva fila");
+
+				tede.appendChild(texto);
+				fila.appendChild(tede);
+				
+			}			
+			tabla.appendChild(fila);			
+		}
+	
+	window.onload=eventos;
+	</script>
+</head>
+<body>
+	<table id="tabla" border="1">
+		<tr>
+			<td>fila predeterminada 1</td>
+			<td>fila predeterminada 1</td>
+			<td>fila predeterminada 1</td>
+			<td>fila predeterminada 1</td>
+			<td>fila predeterminada 1</td>
+		</tr>
+		<tr>
+			<td>fila predeterminada 2</td>
+			<td>fila predeterminada 2</td>
+			<td>fila predeterminada 2</td>
+			<td>fila predeterminada 2</td>
+			<td>fila predeterminada 2</td>
+		</tr>
+	</table>
+
+	<input id="b1" type="button" value="añadir fila" >
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación con Expresiones Regulares</title>
+</head>
+<body>
+    <h2>Formulario de Validación</h2>
+    
+    <form id="formulario">
+        <label for="telefono">Teléfono (Formato: + seguido de 2 o 3 dígitos opcionales, y 9 dígitos obligatorios):</label>
+        <input type="text" id="telefono" placeholder="+12 123456789 o 123456789">
+        <span id="telError" style="color: red;"></span>
+        <br><br>
+
+        <label for="email">Correo Electrónico (Formato: user@example.com):</label>
+        <input type="text" id="email" placeholder="user@example.com">
+        <span id="emailError" style="color: red;"></span>
+        <br><br>
+
+        <label for="codigoPostal">Código Postal (Formato: 12345 o 12345-6789):</label>
+        <input type="text" id="codigoPostal" placeholder="12345 o 12345-6789">
+        <span id="codigoError" style="color: red;"></span>
+        <br><br>
+
+        <button type="button" onclick="validarFormulario()">Validar</button>
+    </form>
+
+    <script>
+        // Usando barras   let regex = /abc/;  
+        // Usando el constructor  let regex2 = new RegExp('abc');  
+
+        
+        // Expresiones regulares para validar cada campo
+        const regexTelefono = /^(\+?\d{2,3})?\d{9}$/;  // "+ prefijo de 2 o 3 dígitos (opcional), seguido de 9 dígitos obligatorios
+        const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        const regexCodigoPostal = /^\d{5}(-\d{4})?$/;
+
+        function validarFormulario() {
+            // Obtener los campos de texto
+            const telefono = document.getElementById('telefono').value;
+            const email = document.getElementById('email').value;
+            const codigoPostal = document.getElementById('codigoPostal').value;
+
+            // Variables para mostrar los errores
+            let telError = '';
+            let emailError = '';
+            let codigoError = '';
+
+            // Validar el teléfono
+            if (!regexTelefono.test(telefono)) {
+                telError = 'Formato de teléfono incorrecto. Ej: +12 123456789 o 123456789';
+            }
+
+            // Validar el correo electrónico
+            if (!regexEmail.test(email)) {
+                emailError = 'Formato de correo incorrecto. Ej: user@example.com';
+            }
+
+            // Validar el código postal
+            if (!regexCodigoPostal.test(codigoPostal)) {
+                codigoError = 'Formato de código postal incorrecto. Ej: 12345 o 12345-6789';
+            }
+
+            // Mostrar los errores en la página
+            document.getElementById('telError').innerText = telError;
+            document.getElementById('emailError').innerText = emailError;
+            document.getElementById('codigoError').innerText = codigoError;
+
+            // Si no hay errores, mostrar un mensaje de éxito
+            if (!telError && !emailError && !codigoError) {
+                alert('Formulario válido');
+            }
+        }
+    </script>
+</body>
+</html>

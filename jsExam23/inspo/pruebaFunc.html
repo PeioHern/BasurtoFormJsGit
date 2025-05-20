@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>...</title>
+<meta charset="UTF-8" >
+<script>
+
+const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+var mensaje=prompt("introduce un mensaje").toUpperCase();
+var desplazamiento=prompt("introduce un desplazamiento");
+
+cifradoCesar(mensaje, desplazamiento);
+//HOLA 3=KROD
+
+function cifradoCesar(mensaje, desplazamiento) {
+let resultado="";
+
+    for (let i = 0; i < mensaje.length; i++) {
+        const char = mensaje[i];
+        if (letras.includes(char)) {
+            let posicionActual = letras.indexOf(char);
+            let nuevaPosicion = (posicionActual + desplazamiento) % 26;
+            resultado += letras[nuevaPosicion];
+        } 
+    }
+
+    alert(resultado);
+    return resultado;
+
+}
+
+
+//correcion en DAW_pics
+
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
