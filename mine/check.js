@@ -1,7 +1,14 @@
-//validadion solo letras funciona, solo queda hacer que el pabellon sea uno de los posibles y que cree un objeto servicio cuando el form es correcto
-//nvm, pabellon just has to be 1,2,3 or 4 (or 0,1,2,3, im not sure)
 
 const pabellones = ["Arrupe", "Areilza", "Aztarain", "Guturbai"];
+
+// ARRAY INCLUDES VALIDATION:
+// if (!pabellones.includes(pabellon.value)) {
+//   alert("Pabellón debe ser uno de los disponibles");
+//   esValido = false;
+//   event.preventDefault();
+// }
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   var eventos = function () {
